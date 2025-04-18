@@ -1,5 +1,5 @@
 import styles from './Heading.module.css';
 
-export function Heading() {
-  return <h1 className={`${styles.heading} ${styles.cyan}`}>Hello, world!</h1>;
+export function Heading({ children, color }) {
+  return <h1 style={{ background: color }}>{children}</h1>;
 }

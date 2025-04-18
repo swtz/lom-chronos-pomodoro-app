@@ -7,7 +7,7 @@ export function App() {
 
   return (
     <div>
-      <Heading />
+      <Heading color='purple'>Hello, luderser!</Heading>
       <p>
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Non
         perferendis vero in aperiam quae numquam et! Odit, vel reiciendis

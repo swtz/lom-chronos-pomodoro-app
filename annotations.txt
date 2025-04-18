@@ -7,24 +7,12 @@ Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
 Aula:
-13. Importando e usando arquivos de CSS Modules com escopo de componente
+15. Propriedades (props) e children de componentes no React
 
-Para usar o CSS Modules é necessários criar um arquivo de estilo assim:
-[file-name].module.css | Assim, é possível importar o arquivo css como um objeto,
-por exemplo: import styles from './MyComponent/MyComponent.module.css';
+Tudo que vem dentro de um componente React é passado para ele como 'children',
+o qual é a primeira propriedade do objeto recebido no primeiro parâmetro do
+componente.
 
-O objeto 'styles' terá as chaves que retornam as propriedades CSS respectivas das classes.
-
-Por que isso é importante?
-Ora, ao inspecionar algum componente no navegador, é possível perceber que o React + Vite
-geram um sufixo com um 'id' da classe criada no 'MyComponent.module.css'. Isso que torna
-esse recurso especial, pois evita conflitos caso sejam usados os mesmos nomes para as
-classes CSS de outros componentes.
-
-Instalar a extensão 'CSS Modules' ajuda no desenvolvimento.
-
-Exemplo de uso:
-
-export function Heading() {
-  return <h1 className={`${styles.heading} ${styles.cyan}`}>Hello, world!</h1>;
+export function MyComponent(props) {
+  return props.children;
 }

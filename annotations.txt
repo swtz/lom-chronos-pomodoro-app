@@ -7,19 +7,8 @@ Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
 Aula:
-10. Entendendo como o React renderiza HTML na página (fluxo do React + Vite)
+11. Component: criando meu primeiro componente do React com JSX (TSX)
 
-<StrictMode /> | presente no src/main.tsx | é uma boa prática do desenvolvedor
-React. É esse componente que 'renderiza' 2x na tela ou que 'imprime' 2x no console
-quando existem efeitos colaterais no código. Isso tudo para garantir o funcionamento
-correto da aplicação React | É usado somente no modo desenvolvimento (igual o TypeScript).
-
-O React transpila o 'jsx' para o conhecido 'html'. Por isso, no browser, o que se vê
-é o 'html' de fato.
-
-Por que SPA (Single Page Application)?
-Ora, existe apenas um arquivo 'index.html' em toda a estrutura gerada pelo Vite.
-Essa é a única página, de fato, que será carregada ao acessar a aplicação pelo endereço
-exibido no console. Por isso, o que o React faz, é permitir o gerenciamento dos seus
-componentes criando a "ilusão" de que existem mais páginas na aplicação sendo que,
-no fim, todas elas serão renderizadas e colocadas nesse 'index.html';
+Dentro de um componente React, ao retornar o conteúdo 'jsx', é permitido
+SOMENTE UM elemento pai. Por isso, não é possível retornar dois elementos
+"um abaixo do outro". Eles sempre precisam ter UM ÚNICO ELEMENTO envolvendo eles.

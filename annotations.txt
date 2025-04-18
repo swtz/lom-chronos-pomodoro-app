@@ -7,12 +7,4 @@ Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
 Aula:
-15. Propriedades (props) e children de componentes no React
-
-Tudo que vem dentro de um componente React é passado para ele como 'children',
-o qual é a primeira propriedade do objeto recebido no primeiro parâmetro do
-componente.
-
-export function MyComponent(props) {
-  return props.children;
-}
+16. Variáveis e Reset de CSS do Chronos (nosso app)

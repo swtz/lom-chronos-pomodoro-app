@@ -7,8 +7,4 @@ Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
 Aula:
-11. Component: criando meu primeiro componente do React com JSX (TSX)
-
-Dentro de um componente React, ao retornar o conteúdo 'jsx', é permitido
-SOMENTE UM elemento pai. Por isso, não é possível retornar dois elementos
-"um abaixo do outro". Eles sempre precisam ter UM ÚNICO ELEMENTO envolvendo eles.
+12. Importando e usando arquivos de CSS globais

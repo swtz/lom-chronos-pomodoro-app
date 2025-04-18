@@ -7,4 +7,4 @@ Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
 Aula:
-16. Variáveis e Reset de CSS do Chronos (nosso app)
+17. Finalização do componente Heading e tipagem TypeScript de children (ReactNode)

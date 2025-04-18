@@ -1,13 +1,19 @@
 import './styles/theme.css';
 import './styles/global.css';
 import { Heading } from './components/Heading';
+import { TimerIcon } from 'lucide-react';
 
 export function App() {
   console.log('Hello, world!');
 
   return (
     <div>
-      <Heading color='purple'>Hello, luderser!</Heading>
+      <Heading>
+        Hello, luderser!
+        <button>
+          <TimerIcon />
+        </button>
+      </Heading>
       <p>
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Non
         perferendis vero in aperiam quae numquam et! Odit, vel reiciendis

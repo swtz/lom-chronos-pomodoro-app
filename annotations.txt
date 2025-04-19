@@ -7,4 +7,31 @@ Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
 Aula:
-17. Finalização do componente Heading e tipagem TypeScript de children (ReactNode)
+19. Criando a estrutura HTML e CSS do nosso app para cada seção do site
+
+Dica CSS/HTML:
+
+.container-fluid {
+  background-color: purple;
+}
+
+.container {
+  max-width: 98rem;
+  background-color: red;
+  margin: 0 auto;
+}
+
+.content {
+  background-color: blue;
+  margin: 3.2rem;
+}
+
+<div className='container-fluid'>
+  <div className='container'>
+    <div className='content'>
+
+    [código continua...]
+
+Assim, é possível criar um estilo que permite que um background ocupe todo o tamanho
+disponível da tela. Depois, o tamanho do conteúdo é limitado pela classe 'container'
+e a classe 'content' envolve o conteúdo propriamente dito.

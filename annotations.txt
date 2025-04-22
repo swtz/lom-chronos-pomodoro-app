@@ -7,32 +7,4 @@ Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
 Aula:
-27. Input: usando condicionais no JSX + "...props" (o restante das propriedades)
-
-Dica JavaScript:
-
-export function DefaultInput({
-  id,
-  labelText,
-  type,
-  ...rest
-}: DefaultInputProps) {
-  return (
-    <>
-      {labelText && <label htmlFor={id}>{labelText}</label>}
-      <input id={id} type={type} {...rest} />
-    </>
-  );
-}
-
-...rest | {...rest}
-
-Com o operador 'rest' é possível obter as propriedades HTML
-RESTANTES no componente DefaultInput. Dessa forma, ao usar o componente
-
-<div className='formRow'>
-  <DefaultInput labelText='task' id='meuInput' type='text' title='ALGUMA COISA' />
-</div>
-
-O elemento JSX (a tag <input />) já "conhecerá" essa propriedade HTML (title). Logo, ela
-aparecerá no HTML final do site.
+28. Input: adicionando estilos de CSS para input ativo, em foco e desativado

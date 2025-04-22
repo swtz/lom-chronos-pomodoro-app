@@ -7,4 +7,4 @@ Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
 Aula:
-29. Criando o componente Cycles com indicadores do ciclo pomodoro em cores
+30. Criando um componente de botão reutilizável com opções

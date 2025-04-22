@@ -7,4 +7,12 @@ Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
 Aula:
-25. Criando o formulário da página inicial
+26. Input: um componente um pouco mais complexo
+
+Dica React:
+
+type ComponentProps = {} & React.ComponentProps<'HTMLElement'>;
+
+É possível fazer uma interseção entre as propriedades das tags HTML e o componente
+criado pelo desenvolvedor. Assim, um componente que retorna um JSX pode "conhecer"
+os atributos HTML nativos.

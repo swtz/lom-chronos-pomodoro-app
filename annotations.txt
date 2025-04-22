@@ -7,12 +7,32 @@ Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
 Aula:
-26. Input: um componente um pouco mais complexo
+27. Input: usando condicionais no JSX + "...props" (o restante das propriedades)
 
-Dica React:
+Dica JavaScript:
 
-type ComponentProps = {} & React.ComponentProps<'HTMLElement'>;
+export function DefaultInput({
+  id,
+  labelText,
+  type,
+  ...rest
+}: DefaultInputProps) {
+  return (
+    <>
+      {labelText && <label htmlFor={id}>{labelText}</label>}
+      <input id={id} type={type} {...rest} />
+    </>
+  );
+}
 
-É possível fazer uma interseção entre as propriedades das tags HTML e o componente
-criado pelo desenvolvedor. Assim, um componente que retorna um JSX pode "conhecer"
-os atributos HTML nativos.
+...rest | {...rest}
+
+Com o operador 'rest' é possível obter as propriedades HTML
+RESTANTES no componente DefaultInput. Dessa forma, ao usar o componente
+
+<div className='formRow'>
+  <DefaultInput labelText='task' id='meuInput' type='text' title='ALGUMA COISA' />
+</div>
+
+O elemento JSX (a tag <input />) já "conhecerá" essa propriedade HTML (title). Logo, ela
+aparecerá no HTML final do site.

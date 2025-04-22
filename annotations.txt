@@ -7,4 +7,4 @@ Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
 Aula:
-20. Movendo o Container para seu próprio React Component
+21. Organizando componentes em pastas padronizadas

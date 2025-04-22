@@ -7,4 +7,4 @@ Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
 Aula:
-28. Input: adicionando estilos de CSS para input ativo, em foco e desativado
+29. Criando o componente Cycles com indicadores do ciclo pomodoro em cores

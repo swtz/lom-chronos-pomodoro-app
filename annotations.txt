@@ -7,9 +7,4 @@ Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
 Aula:
-22. Criando o componente de logo com ícone e link
-
-A extensão 'Auto Rename Tag' ajuda muito na hora de renomear alguma tag HTML.
-
-As margens no CSS não somam uma na outra, ou seja, se o elemento pai tem uma
-margem de 32px e o elemento filho tem uma margem de 32px, uma sobrepõe a outra.
+23. Criando componente de menu com links e ícones

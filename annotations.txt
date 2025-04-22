@@ -7,4 +7,13 @@ Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
 Aula:
-23. Criando componente de menu com links e ícones
+24. Criando o componente de CountDown (Contador regressivo)
+
+Dica CSS:
+
+font-size: clamp(8rem, 25vw, 16rem);
+
+Esse método CSS permite colocar um valor mínimo (8rem), um valor adaptável
+(25 viewport width) e um valor máximo (16rem) para o tamanho da fonte, ou
+seja, no mobile, a fonte não estoura o tamanho do container; logo, ela vai
+diminuindo ficando 1/4 do tamanho da largura da tela (25vw).

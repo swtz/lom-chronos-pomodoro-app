@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { HistoryIcon, HouseIcon, SettingsIcon, SunIcon } from 'lucide-react';
 
 import styles from './styles.module.css';
@@ -16,13 +16,18 @@ export function Menu() {
       const nextTheme = prevState === 'dark' ? 'light' : 'dark';
       return nextTheme;
     }); // Depende do valor do estado anterior? Sim. Então precisa de callback.
-
-    document.documentElement.setAttribute('data-theme', theme); // side effect
   }
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+
+    return () => {
+      console.log('Esse componente será atualizado.');
+    };
+  }, [theme]);
 
   return (
     <nav className={styles.menu}>
-      <h1>{theme}</h1>
       <a
         className={styles.menuLink}
         href='#'

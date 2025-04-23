@@ -6,62 +6,28 @@ Atualização do Curso de React.Js e Next.js by Luiz Otávio Miranda
 Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
-37. useEffect - hook feito para trabalhar com efeitos colaterais no componente
+Aula: 38. Salvando o tema no localStorage e trocando o ícone de sol e lua
 
-Os componentes do React são puramente funções, assim, quando ocorre alguma mudança
-em algum estado ou em alguma 'props' do componente, o React 'executa novamente' a
-função que representa o componente fazendo com que o JSX presente nele seja
-re-renderizado.
-Isso acontece, pois, para o React 'pegar' o novo valor do estado ou 'props', é
-necessário executar a função de novo ou renderizar o componente de novo.
+Nessa aula, há uma técnica muito interessante para alterar componentes com base
+no estado atual usando um objeto.
 
-Tipo de uso do hook 'useEffect':
+O que motiva essa técnica? O uso da seguinte condicional:
 
-1 — sem array de dependências | é executado TODA VEZ que o componente é renderizado
+if(state === 'foo') {
+  <MyComponent />
+} else {
+  <AnotherComponent />
+}
 
-useEffect(() => {
-  console.log('', Date.now());
-});
+Com a técnica:
 
-2 — com array de dependências vazio | é executado somente uma vez (quando o componente
-é montado)
+const myObject = {
+  foo: <MyComponent />,
+  bar: <AnotherComponent />
+};
 
-useEffect(() => {
-  console.log('', Date.now());
-}, []);
+<h1>{myObject[state]}</h1>
 
-3 — com array de dependências cheio | é executado TODA VEZ que a variável mudar
-useEffect(() => {
-  console.log(theme, Date.now());
-}, [theme]);
-
-Notei que o useEffect garante que uma instrução será executada quando, por exemplo, um
-estado mudar. No exemplo do código dessa aula, o valor da variável está sendo usado em
-um lugar o qual o React não "presta atenção". Por isso, o papel do 'useEffect' é justamente
-"prestar atenção" na mudança da variável por meio do seu array de dependências e, após a mudança,
-executar as instruções contidas dentro da sua função.
-
-O useEffect possui uma funcionalidade que permite o desenvolvedor "limpar a sujeira" que seu
-código pode fazer. Um exemplo clássico é quando se usa 'useEffect' com 'addEventListener'.
-Esses eventos vão acumulando à medida que o usuário interage com um elemento que o possui.
-Assim, é necessário usar 'removeEventListener' em alguns casos para que o browser não
-fique super lotado desses eventos.
-Essa funcionalidade do 'useEffect' pode ser muito útil nesses casos:
-
-useEffect(() => {
-  // code
-
-  return () => {
-      console.log('Executo primeiro que a instrução acima!');
-    };
-}, [foo]);
-
-Retornando um função de callback, é possível instruir o código necessário para fazer a limpeza
-no código. Isso funciona, pois o código contido dentro da função de callback é executado primeiro
-que o código contido no hook.
-
-Essa função de callback usa a renderização que fora feita anteriormente. Depois, o código
-dentro do hook é executado normalmente usando o novo valor da variável 'foo'.
-
-Essa função é chamada de 'cleanup', pelo fato dela ser usada para limpar o código.
-Essa função também é disparada quando o componente é desmontado (ou desaparece da tela).
+Assim, dependendo do valor de 'state', um componente será renderizado.
+Dessa maneira, a renderização do componente fica dinâmica, além do código
+ficar mais elegante.

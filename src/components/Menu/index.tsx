@@ -1,12 +1,21 @@
 import { useState, useEffect } from 'react';
-import { HistoryIcon, HouseIcon, SettingsIcon, SunIcon } from 'lucide-react';
+import {
+  HistoryIcon,
+  HouseIcon,
+  MoonIcon,
+  SettingsIcon,
+  SunIcon,
+} from 'lucide-react';
 
 import styles from './styles.module.css';
 
 type AvailableThemes = 'dark' | 'light';
 
 export function Menu() {
-  const [theme, setTheme] = useState<AvailableThemes>('dark');
+  const [theme, setTheme] = useState<AvailableThemes>(() => {
+    const storageTheme = localStorage.getItem('theme') as AvailableThemes;
+    return storageTheme || 'dark';
+  });
 
   function handleToggleTheme(
     event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
@@ -15,15 +24,17 @@ export function Menu() {
     setTheme(prevState => {
       const nextTheme = prevState === 'dark' ? 'light' : 'dark';
       return nextTheme;
-    }); // Depende do valor do estado anterior? Sim. Então precisa de callback.
+    });
   }
+
+  const nextThemeIcon = {
+    dark: <SunIcon />,
+    light: <MoonIcon />,
+  };
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
-
-    return () => {
-      console.log('Esse componente será atualizado.');
-    };
+    localStorage.setItem('theme', theme);
   }, [theme]);
 
   return (
@@ -59,7 +70,7 @@ export function Menu() {
         title='Mudar tema'
         onClick={handleToggleTheme}
       >
-        <SunIcon />
+        {nextThemeIcon[theme]}
       </a>
     </nav>
   );

@@ -7,13 +7,42 @@ Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
 Aula:
-32. Entendendo o estado e o problema do efeito colateral
+33. Usando useState para o estado com programação reativa
 
-Todo código que é alterado — por exemplo, uma variável que tem seu valor alterado —
-"por fora do React" é chamado de efeito colateral. Ora, quando se usa JavaScript
-puro dentro de um ambiente React, é como se ele não soubesse o que está acontecendo.
-O React não tem conhecimento de que essa variável está mudando e de onde está sendo
-usada. Essa situação que é chamada de efeito colateral.
+Programação reativa com 'useState':
 
-O hook 'useState' resolve esse problema. Com ele, o React consegue monitorar uma
-variável 'repassando' sua mudança em todos os componentes que a usam.
+const [number, setNumber] = useState(0);
+
+setNumber(number + 1) ou setNumber((n) => n + 1);
+
+<h1>Contador: {number}</h1>;
+
+A função 'setNumber' introduz o conceito de programação reativa, pois
+basta chamar uma função que o React monitora onde a variável está sendo
+usada e garante que todo componente reajam à sua atualização.
+
+Regras:
+
+"Sempre que a estado DEPENDER do valor ANTERIOR do estado, deve-se usar uma função
+de callback, pois, em seu primeiro parâmetro, ela, de fato, guarda o valor anterior."
+
+setNumber((n) => n + 1);
+
+A forma 'setNumber(number + 1)' está correta; entretanto, a variável 'number' representa
+o valor ATUAL e não o valor ANTERIOR do estado.
+
+Nessa aula, a partir dos 7 minutos, o coach-Luiz mostra alguns comportamentos "inesperados"
+por conta dessa lógica de 'prevState' e 'currentState'. Isso é de extrema importância e
+está relacionado aos fundamentos das funções (paradigma funcional).
+
+Existe também a técnica chamada 'Lazy Initialization/Instantiation' (inicialização preguiçosa).
+Ela ajuda no carregamento ou processamento de um código mais complexo. Permite que tal código
+seja executado apenas UMA VEZ na PRIMEIRA montagem do componente.
+
+Como usar? Assim:
+
+const [number, setNumber] = useState(() => {
+  return 0;
+});
+
+Ou seja, basta passar uma função de callback como primeiro parâmetro do 'useState';

@@ -6,28 +6,8 @@ Atualização do Curso de React.Js e Next.js by Luiz Otávio Miranda
 Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
-Aula: 38. Salvando o tema no localStorage e trocando o ícone de sol e lua
+Aula: 39. Criando a página Home e um template para todas as outras páginas
 
-Nessa aula, há uma técnica muito interessante para alterar componentes com base
-no estado atual usando um objeto.
+Configuração recomendada para exibição de diretórios no vscode:
 
-O que motiva essa técnica? O uso da seguinte condicional:
-
-if(state === 'foo') {
-  <MyComponent />
-} else {
-  <AnotherComponent />
-}
-
-Com a técnica:
-
-const myObject = {
-  foo: <MyComponent />,
-  bar: <AnotherComponent />
-};
-
-<h1>{myObject[state]}</h1>
-
-Assim, dependendo do valor de 'state', um componente será renderizado.
-Dessa maneira, a renderização do componente fica dinâmica, além do código
-ficar mais elegante.
+"explorer.compactFolders": false

@@ -12,10 +12,17 @@ export function Menu() {
     event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
   ) {
     event.preventDefault();
+    setTheme(prevState => {
+      const nextTheme = prevState === 'dark' ? 'light' : 'dark';
+      return nextTheme;
+    }); // Depende do valor do estado anterior? Sim. Então precisa de callback.
+
+    document.documentElement.setAttribute('data-theme', theme); // side effect
   }
 
   return (
     <nav className={styles.menu}>
+      <h1>{theme}</h1>
       <a
         className={styles.menuLink}
         href='#'

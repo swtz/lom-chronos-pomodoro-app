@@ -7,4 +7,14 @@ Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
 Aula:
-35. Capturando o evento de clique em link com preventDefault para tema dark e light
+36. useState DEVE usar funções puras (sem efeito colateral)
+
+Efeito colateral —> ações que o React não espera que aconteçam, ou seja,
+são instruções que o React não tem conhecimento. Elas passam "por fora do
+campo de monitoramento" do React.
+
+A linha 20 do código (Menu component) mostra um exemplo disso.
+Tem a ver com o escopo de memória das funções. (o React segue o paradigma funcional)
+
+É aí que vem o famoso 'useEffect', o qual foi desenvolvido para lidar com instruções
+que causam efeitos colaterais dentro do React.

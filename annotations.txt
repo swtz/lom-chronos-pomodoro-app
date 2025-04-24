@@ -6,4 +6,4 @@ Atualização do Curso de React.Js e Next.js by Luiz Otávio Miranda
 Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
-Aula: 40. Componente GenericHtml para páginas que renderizam HTML
+41. Definindo os models (modelos) da aplicação TaskModel e TaskStateModel

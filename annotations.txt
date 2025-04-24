@@ -6,23 +6,4 @@ Atualização do Curso de React.Js e Next.js by Luiz Otávio Miranda
 Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
-Aula: 43. Estado global da aplicação com useState e comunicação via props
-
-Quando se trabalho com Estados que são objetos mais complexos, o coach-Luiz
-recomendou criar funções que manipulam dados específicos desse objeto.
-Isso é útil para que não se use diretamente o método que altera o Estado —
-useState — pois um Estado alterado de modo incorreto pode comprometer a aplicação
-inteira. Essa função pode ser enviada para um ComponenteFilho.
-
-"Inferência de tipo" é quando o TypeScript já atribui um tipo à uma variável
-de modo automático; logo, não é necessário tipar essa variável.
-
-Ao trabalhar com estruturas de dados mutáveis — Array, Object — usando
-'useState' e seu método 'setState', NUNCA se deve alterar o Estado propriamente
-dito, isto é, deve-se criar um NOVO Estado baseado no Estado ANTERIOR.
-
-No React, nada é ALTERADO; tudo é RECRIADO. O coach-Luiz reforçou essa REGRA
-principalmente quando se envolve estruturas de dados MUTÁVEIS.
-
-Lembrando que essa regra vale para tudo que se denomina 'Estado' no React, ou seja,
-não é uma regra restrita ao hook 'useState'.
+Aula: 44. Enviando o estado via props por vários níveis de componentes (prop drilling)

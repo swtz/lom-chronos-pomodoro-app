@@ -6,8 +6,4 @@ Atualização do Curso de React.Js e Next.js by Luiz Otávio Miranda
 Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
-Aula: 39. Criando a página Home e um template para todas as outras páginas
-
-Configuração recomendada para exibição de diretórios no vscode:
-
-"explorer.compactFolders": false
+Aula: 40. Componente GenericHtml para páginas que renderizam HTML

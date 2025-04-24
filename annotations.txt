@@ -6,4 +6,15 @@ Atualização do Curso de React.Js e Next.js by Luiz Otávio Miranda
 Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
-41. Definindo os models (modelos) da aplicação TaskModel e TaskStateModel
+42. Em qual componente devo colocar o estado da aplicação no React?
+
+Por conta da comunicação entre os componentes, é de extrema importância analisar
+onde o estado da aplicação vai ficar. Pois com o uso do hook 'useState'  a comunicação
+entre os componentes é feita de "fora para dentro", ou seja, o ComponentePai envia
+um Estado para um ComponenteFilho. É possível que um ComponenteFilho "envie de volta"
+esse Estado para o ComponentePai — com alterações. Entretanto, o código fica mais
+complexo. Por isso existem outras formas de fazer isso, por exemplo com o uso de
+'contextos'.
+
+A pergunta é: esse Estado será usado apenas no componente desse nível ou será usado
+pelo componente pai? Em caso afirmativo, o Estado deve ser gerenciado pelo componente pai.

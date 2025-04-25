@@ -6,4 +6,4 @@ Atualização do Curso de React.Js e Next.js by Luiz Otávio Miranda
 Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
-Aula: 49. Organizando o contexto em arquivos separados
+Aula: 50. Capturando o evento submit do formulário (onSubmit com preventDefault)

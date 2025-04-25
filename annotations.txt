@@ -6,14 +6,50 @@ Atualização do Curso de React.Js e Next.js by Luiz Otávio Miranda
 Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
-Aula: 45. O conceito de prop drilling (talvez você precise de Context API)
+Aula: 46. Context API - criando um context com createContext, useContext + Provider
 
-'Prop Drilling' é quando um Estado é passado de um ComponentePai para um 
-ComponenteFilho que está em um nível bem distante da onde esse Estado será
-usado definitivamente.
-Ou seja, esse Estado percorre toda uma árvore de componentes para que apenas
-um ComponenteFilho o manipule, a fim do ComponentePai usufruir da mudança de
-Estado.
+Contextos:
 
-Quando esse Estado já chega no terceiro nível de repasse, é interessante o uso
-de 'contextos'.
+Os dados (o Estado) são movidos para um Contexto e o método para alterar os valores
+pode ser usado com algumas ferramentas, por exemplo 'useReducer'.
+
+Maneira básica:
+
+-> criar diretório MyContent/index.tsx
+
+const MyContext = createContext({ foo: 'bar' })
+
+-> no diretório MyComponent/index.tsx
+
+const myContext = useContext(MyContext);
+console.log(myContext) // { foo: 'bar' }
+
+Entretanto, esse tipo de contexto é 'Read Only', ou seja, não é possível manipular
+esse valor.
+
+Porém, como o React visa a programação Reativa, é interessante que o Estado presente
+nesse contexto, além de poder ser alterado, os componentes que fazem uso dele DEVEM REAGIR
+a tais mudanças.
+
+Isso é resolvido com o uso de um 'Provider'.
+Ora, o Contexto é um Componente React, ou seja, ele pode ser o ComponentePai dos
+ComponentesFilhos que o usarem. Como assim?
+
+<MyContext.Provider value={{ bar: 'foo' }}>
+  <MyComponent />
+</MyContext.Provider value={{ bar: 'foo' }}>
+
+Quando se usa um 'Provider' o 'MyComponent' passa a usar O OBJETO PASSADO PARA A PROPRIEDADE
+'value', ou seja, o valor que fora usado em 'createContext' não é mais usado. Aquele valor
+só é útil para quando é usado 'useContexto' FORA DE UM 'Provider'.
+
+Por que é importante o uso de um 'Provider'? Porque ele permite que o React usufrua do seu
+conceito de programação reativa, ou seja, no objeto contido em 'value' é possível passar
+um Estado e seu método 'setState'. Logo, os componentes que usam esse Estado REAGEM à mudança
+dele. 
+É claro que essa é apenas uma técnica para compartilhar um Estado entre todos os componentes
+que precisam usar ele. Como já dito, o uso de 'useReducer' é outra técnica utilizada
+(é recomendável seu uso para objetos complexos).
+
+Lembrando que todos os componentes — inclusive os aninhados — podem usufruir do valor contido em
+'value'.

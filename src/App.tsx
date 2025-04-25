@@ -3,6 +3,7 @@ import { TaskStateModel } from './models/TaskStateModel';
 import { Home } from './pages/Home';
 import './styles/global.css';
 import './styles/theme.css';
+import { TaskContext } from './contexts/TaskContext';
 
 // export type TaskStateModel = {
 //   tasks: TaskModel[];
@@ -33,5 +34,9 @@ const initialState: TaskStateModel = {
 export function App() {
   const [state, setState] = useState(initialState);
 
-  return <Home />;
+  return (
+    <TaskContext.Provider value={{ outraChave: 'outroValor' }}>
+      <Home />;
+    </TaskContext.Provider>
+  );
 }

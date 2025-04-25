@@ -6,4 +6,14 @@ Atualização do Curso de React.Js e Next.js by Luiz Otávio Miranda
 Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
-Aula: 44. Enviando o estado via props por vários níveis de componentes (prop drilling)
+Aula: 45. O conceito de prop drilling (talvez você precise de Context API)
+
+'Prop Drilling' é quando um Estado é passado de um ComponentePai para um 
+ComponenteFilho que está em um nível bem distante da onde esse Estado será
+usado definitivamente.
+Ou seja, esse Estado percorre toda uma árvore de componentes para que apenas
+um ComponenteFilho o manipule, a fim do ComponentePai usufruir da mudança de
+Estado.
+
+Quando esse Estado já chega no terceiro nível de repasse, é interessante o uso
+de 'contextos'.

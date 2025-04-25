@@ -6,16 +6,4 @@ Atualização do Curso de React.Js e Next.js by Luiz Otávio Miranda
 Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
-Aula: 47. Context API - movendo nosso estado real para dentro do contexto
-
-Nessa aula, há algumas dicas de como criar um Componente para retornar um 'Provider'.
-Isso é útil, pois torna mais fácil o uso do 'Provider' em outros locais e permite que
-o código fique mais receptível à futuras alterações.
-
-A moral de usar 'createContext' é usufruir do 'Provider'. Assim é possível
-passar um Estado para a propriedade 'value'. Dessa forma todos os componentes
-que estiverem dentro do 'Provider' poderão usufruir desse Estado com o uso
-do hook 'useContext(MyContext)'.
-
-É possível criar um hook personalizado que já retorna o valor contido em 'value'.
-É útil para não usar o Contexto diretamente.
+Aula: 48. Context API - useContext + useState (estado + contexto)

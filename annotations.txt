@@ -6,4 +6,4 @@ Atualização do Curso de React.Js e Next.js by Luiz Otávio Miranda
 Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
-Aula: 54. Trabalhando com o estado antes e depois de setState (getNextCycle)
+Aula: 55. Pegando o type do próximo ciclo - Algoritmo similar ao FizzBuzz

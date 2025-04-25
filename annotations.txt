@@ -6,4 +6,32 @@ Atualização do Curso de React.Js e Next.js by Luiz Otávio Miranda
 Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
-Aula: 51. Input controlado no React com "value", "onChange" e useState
+Aula: 52. useRef + Ref para não causar re-renderizações nos componentes
+
+Com useRef é possível salvar valores entre as renderizações dos componentes
+sem causar um renderização no componente.
+
+Alguns passos:
+
+1 — const myRef = useRef<HtmlInputElement>(null);
+
+2 — <MyInput type='submit' onSubmit={handleSubmit} id='myInput' ref={myRef} />
+
+3 — function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  event.preventDefault();
+  console.log(myRef.current.value);
+}
+
+Assim, é possível obter o valor do 'input' sem renderizar a página a todo momento.
+Nesse caso, é a obtenção de um valor do 'input' não monitorado.
+
+Isso evita renderizações desnecessárias que podem causar lentidões no browser.
+
+Obs.: todo elemento JSX possui a propriedade 'ref'. Por isso é possível combiná-lo
+com o uso do 'useRef'.
+Para acessar o valor guardado no 'RefObject', basta acessar a propriedade 'current'.
+
+Dica:
+
+-> input controlado -> para formulários que reagem ao que o usuário digita em tempo real.
+-> input com useRef -> para validações que ocorrem após o usuário ter preenchido as informações.

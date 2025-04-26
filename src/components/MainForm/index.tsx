@@ -1,15 +1,18 @@
 import { useRef } from 'react';
 import { PlayCircleIcon } from 'lucide-react';
+
+import { useTaskContext } from '../../hooks/useTaskContext';
+
+import { TaskModel } from '../../models/TaskModel';
 import { Cycles } from '../Cycles';
 import { DefaultButton } from '../DefaultButton';
 import { DefaultInput } from '../DefaultInput';
 
-import styles from './styles.module.css';
-import { TaskModel } from '../../models/TaskModel';
-import { useTaskContext } from '../../hooks/useTaskContext';
 import { getNextCycle } from '../../utils/getNextCycle';
 import { getNextCycleType } from '../../utils/getNextCycleType';
 import { formatSecondsToMinutes } from '../../utils/formatSecondsToMinutes';
+
+import styles from './styles.module.css';
 
 export function MainForm() {
   const { state, setState } = useTaskContext();
@@ -65,6 +68,7 @@ export function MainForm() {
           type='text'
           placeholder='Digite algo:'
           ref={taskNameInput}
+          disabled={!!state.activeTask}
         />
       </div>
 

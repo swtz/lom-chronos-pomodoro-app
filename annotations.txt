@@ -6,13 +6,4 @@ Atualização do Curso de React.Js e Next.js by Luiz Otávio Miranda
 Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
-Aula: 58. Como iterar elementos JSX e usar a prop key no React (do jeito certo)
-
-Sobre a propriedade 'key' dos componentes React que são retornado por um método
-de Array:
-
-Não é uma boa prática usar o valor de 'index' do método, pois no caso de uma
-reordenação do Array, os índices dessa estrutura permanecem os mesmo mesmo
-que os componentes mudem de lugar. Por isso é sempre recomendável usar, de fato,
-um valor único como valor dessa propriedade. Isso ajuda o React a ter uma performance
-melhor ao renderizar o componentes iterável que sofrera alteração.
+Aula: 59. Desativando o input se tem task ativa (disabled)

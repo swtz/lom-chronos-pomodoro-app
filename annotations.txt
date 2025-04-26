@@ -6,38 +6,4 @@ Atualização do Curso de React.Js e Next.js by Luiz Otávio Miranda
 Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
-Aula: 66. TypeScript + Reducer: criando actions bem tipadas e escaláveis
-
-A partir dessa aula, o Estado que detém o objeto responsável pelo gerenciamento
-das 'tasks', será migrado do 'useState' para o 'useReducer'.
-
-Alguns passos:
-
-1 — arquivo de 'actions' para definir as ações
-2 — arquivo de exportará a função que será usada no primeiro parâmetro do 'useReducer'
-(essa função é o 'reducer' propriamente dito)
-
-Vale observar no arquivo das 'actions':
-
-export enum TaskActionTypes {
-  START_TASK = 'START_TASK',
-  INTERRUPT_TASK = 'INTERRUPT_TASK',
-  RESET_STATE = 'RESET_STATE',
-}
-
-export type TaskActionModel =
-| {
-    type: TaskActionTypes.START_TASK;
-    payload: TaskModel;
-  }
-| {
-    type: TaskActionTypes.INTERRUPT_TASK;
-    payload: TaskModel;
-  }
-| {
-    type: TaskActionTypes.RESET_STATE;
-  };
-
-Essa sintaxe permite desacoplar o 'payload' do 'type' da 'action', ou seja,
-para o TypeScript, são 2 tipos distintos. Assim é possível ter um 'payload'
-distinto do outro. Também, é possível ter um 'type' sem 'payload'.
+Aula: 67. Migrando o state de useState para useReducer

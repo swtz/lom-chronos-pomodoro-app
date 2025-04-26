@@ -6,45 +6,4 @@ Atualização do Curso de React.Js e Next.js by Luiz Otávio Miranda
 Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
-Aula: 64. useReducer com objeto em state e actions
-
-Como dito antes, a 'action' normalmente é um objeto.
-Como está sendo usado TypeScript, é possível tipar esse objeto.
-
-type ActionType = {
-  type: string;
-  payload?: string;
-};
-
-const [myState, dispatch] = useReducer((state, action: ActionType) => {}, { myKey: 'foo' });
-
-O que tem de diferente aqui?
-O valor do 2 parâmetro do 'useReducer' é agora um objeto.
-O valor do 2 parâmetro da função de callback do 'useReducer' é também um objeto. Além disso,
-tipagem mostra uma propriedade opcional — payload — que funciona como uma opção para uma
-determinada ação. O 'payload' de uma 'action' normalmente é um objeto.
-
-Como fica o uso do 'dispatch'?
-Fica bem parecido, entretanto ele aguarda agora um objeto como parâmetro:
-
-dispatch({ type: 'MY_ACTION', payload: 'bar' })
-
-Como fica a estrutura 'switch' dentro da função de callback do 'useReducer'?
-
-switch (action.type) {
-  case 'MY_ACTION': { // pode-se envolver o código contido em 'case' entre chaves
-    if (!action.payload) return state; // sempre retornar um 'state'
-    return {
-      ...state,
-      myKey: state.myKey = action.payload,
-    };
-  }
-}
-
-return state;
-
-Ao observar o Estado 'myState', ele agora possui o valor 'bar'.
-
-Qual o benefício dessa sintaxe?
-É possível usar a mesma 'action' com um valor de carga — payload — diferente.
-Lembrando que o 'payload' pode ser opcional.
+Aula: 65. Aqui está o código do seu TaskContextProvider antigo (como te prometi)

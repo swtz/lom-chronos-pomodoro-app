@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { PlayCircleIcon } from 'lucide-react';
+import { PlayCircleIcon, StopCircleIcon } from 'lucide-react';
 
 import { useTaskContext } from '../../hooks/useTaskContext';
 
@@ -83,7 +83,22 @@ export function MainForm() {
       )}
 
       <div className={styles.formRow}>
-        <DefaultButton icon={<PlayCircleIcon />} />
+        {!state.activeTask ? (
+          <DefaultButton
+            type='submit'
+            icon={<PlayCircleIcon />}
+            aria-label='Inciar nova tarefa'
+            title='Inciar nova tarefa'
+          />
+        ) : (
+          <DefaultButton
+            type='button'
+            icon={<StopCircleIcon />}
+            color='red'
+            aria-label='Interromper tarefa atual'
+            title='Interromper tarefa atual'
+          />
+        )}
       </div>
     </form>
   );

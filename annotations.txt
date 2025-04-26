@@ -6,4 +6,4 @@ Atualização do Curso de React.Js e Next.js by Luiz Otávio Miranda
 Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
-Aula: 56. state.config em duration da task (workTime, shortBreakTime, longBreakTime)
+Aula: 57. Formatando segundos em minutos e segundos (MM:SS ou 00:00)

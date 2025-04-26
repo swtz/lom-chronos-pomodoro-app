@@ -6,112 +6,45 @@ Atualização do Curso de React.Js e Next.js by Luiz Otávio Miranda
 Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
-Aula: 63. Entendendo useReducer, reducer, dispatch e actions para trabalhar com o estado
+Aula: 64. useReducer com objeto em state e actions
 
-O conjunto de ferramentas 'reducer' permite um tipo de delegação de tarefas. Como assim?
-Ao invés de usar o método que altera completamente o Estado (useState), é possível
-"pedir" para o reducer alterar alguma parte desse Estado baseado em uma 'action' que o
-usuário enviar.
-O que isso traz de benefício?
-Como essa lógica de alteração do Estado fica em uma parte isolada do componente, é evitada
-a repetição desnecessária de código, ou seja, caso o programador queira reaproveitar essa
-função para ser executada de uma maneira diferente — entretanto, com o mesmo propósito —
-basta que ele (o programador) "peça" para o 'reducer' fazer tal ação baseada em uma 'action'.
+Como dito antes, a 'action' normalmente é um objeto.
+Como está sendo usado TypeScript, é possível tipar esse objeto.
 
-Uso do hook useReducer:
+type ActionType = {
+  type: string;
+  payload?: string;
+};
 
-const [number, dispatch] = useReducer((state, action) => {
-  return state;
-}, 0);
+const [myState, dispatch] = useReducer((state, action: ActionType) => {}, { myKey: 'foo' });
 
-1 parâmetro — função de callback
-2 parâmetro — initialState
+O que tem de diferente aqui?
+O valor do 2 parâmetro do 'useReducer' é agora um objeto.
+O valor do 2 parâmetro da função de callback do 'useReducer' é também um objeto. Além disso,
+tipagem mostra uma propriedade opcional — payload — que funciona como uma opção para uma
+determinada ação. O 'payload' de uma 'action' normalmente é um objeto.
 
-O usuário passa uma 'action' para o 'reducer' e ELE FICA ENCARREGADO de alterar o Estado.
-O 'reducer' RETORNA UM NOVO Estado baseado na 'action' passada.
-SEMPRE o 'reducer' deve retornar um Estado (mesmo que sem alteração).
+Como fica o uso do 'dispatch'?
+Fica bem parecido, entretanto ele aguarda agora um objeto como parâmetro:
 
-'number' será o estado atualizado.
-'dispatch' é a função que dispara uma ação.
+dispatch({ type: 'MY_ACTION', payload: 'bar' })
 
-Como de costume, é necessária alguma coisa para disparar a ação (botão, formulário, etc...).
-Vamos usar um botão:
+Como fica a estrutura 'switch' dentro da função de callback do 'useReducer'?
 
-<button onClick(() => dispatch('INCREMENT')) >Increment</button>
-
-Dentro da função de callback do hook 'useReducer', é possível observar os valores dos dois
-parâmetros — 'state' e 'action'
-
-console.log(state, action) // 0 'INCREMENT'
-
-Qual o próximo passo?
-Como o valor de 'action' é literalmente o valor que é passado como 1 argumento da função
-'dispatch', é possível usar a estrutura condicional 'switch'.
-
-Assim, é possível filtrar qual o tipo de 'action' que é passado e executar a instrução
-desejada.
-
-switch (action) {
-  case 'INCREMENT':
-    return state + 1;
+switch (action.type) {
+  case 'MY_ACTION': { // pode-se envolver o código contido em 'case' entre chaves
+    if (!action.payload) return state; // sempre retornar um 'state'
+    return {
+      ...state,
+      myKey: state.myKey = action.payload,
+    };
+  }
 }
 
 return state;
 
-Como o valor passado foi 'INCREMENT', a função é retornada e seu ciclo de vida é encerrado.
+Ao observar o Estado 'myState', ele agora possui o valor 'bar'.
 
-Como, basicamente, fica essa estrutura?
-
-const [number, dispatch] = useReducer((state, action) => {
-
-  switch (action) {
-    case 'INCREMENT':
-      return state + 1;
-    case 'DECREMENT':
-      return state - 1;
-    case 'CLEAN':
-      return 0;
-  }
-
-  return state;
-}, 0);
-
-<MyComponent>
-<h1>The number is: {number}</h1>
-  <button onClick={() => dispatch('INCREMENT')}>Increment</button>
-  <button onClick={() => dispatch('DECREMENT')}>Decrement</button>
-  <button onClick={() => dispatch('CLEAN')}>Clean</button>
-</MyComponent>
-
-Assim, fica bem prático de entender o funcionamento básico do 'reducer'.
-
-Passo a passo:
-
-1 — 'useReducer'
-2 — parâmetros do hook — useReducer(() => {}, initialValue)
-3 — parâmetros da função de callback do 'useReducer' — (state, action) => {}
-4 — retorno do 'useReducer' — const {newState, dispatch } = useReducer((state, action => {}, initialValue))
-5 — Onde usar 'newState'?
-  <MyComponent>
-    <h1>My new state is: {newState}</h1>
-  </MyComponent>
-6 — Onde usar 'dispatch'?
-  <MyComponent>
-    <button onClick={dispatch('MY_ACTION')} >Click here!<button>
-  </MyComponent>
-7 — O que fazer com a 'action'?
-  const [newState, dispatch] = useReducer((state, action) => {
-
-  switch (action) {
-    case 'MY_ACTION':
-      return { ...initialState, newKey: 'I updated my state using a reducer!' };
-  }
-
-  return state;
-}, initialState);
-
-Como o coach-Luiz ressaltou, essa é a estrutura mais básica possível do 'reducer'. Entretanto,
-é bem comum modularizar essa estrutura, a fim que ela não fique muito complexa de entender
-caso exista muitas 'actions' ou se o programador não queira usar a função 'dispatch' diretamente.
-
-Normalmente a 'action' é um objeto com determinado 'payload' e o 'state' é um objeto bem grande.
+Qual o benefício dessa sintaxe?
+É possível usar a mesma 'action' com um valor de carga — payload — diferente.
+Lembrando que o 'payload' pode ser opcional.

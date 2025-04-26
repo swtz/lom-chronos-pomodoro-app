@@ -10,6 +10,7 @@ import { TaskModel } from '../../models/TaskModel';
 import { Cycles } from '../Cycles';
 import { DefaultButton } from '../DefaultButton';
 import { DefaultInput } from '../DefaultInput';
+import { Tips } from '../Tips';
 
 import styles from './styles.module.css';
 
@@ -64,7 +65,7 @@ export function MainForm() {
       </div>
 
       <div className={styles.formRow}>
-        <p>Lorem ipsum dolor sit amet.</p>
+        <Tips />
       </div>
 
       {state.currentCycle != 0 && (

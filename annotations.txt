@@ -6,4 +6,4 @@ Atualização do Curso de React.Js e Next.js by Luiz Otávio Miranda
 Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
-Aula: 67. Migrando o state de useState para useReducer
+Aula: 68. Criando o componente Tips para dar sugestões ao usuário sobre a tarefa e ciclo

@@ -6,6 +6,19 @@ Atualização do Curso de React.Js e Next.js by Luiz Otávio Miranda
 Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
-Aula: 71. web worker com setTimeout + useEffect para contagem regressiva
+Aula: 72. Atualizando o contador a cada segundo no estado e na página
 
-Algumas anotações foram feitas no arquivo 'src/workers/timerWorker.js'.
+Com a funcionalidade de 'countdown' criada e sendo executada por um 'web worker',
+é possível criar uma 'action', a fim de usar o 'reducer' para atualizar o Estado
+da task.
+
+Criadas as 'actions', é possível definir o local da função 'dispatch' e depois é
+possível trabalhar no 'reducer' para controlar essas 'actions'.
+
+Depois de atualizar o Estado no 'reducer', é importante aproveitar a condicional
+que checa o valor da variável 'countDownSeconds', pois o 'dispatch' contendo a 'action'
+COUNT_DOWN só deve ser disparado quando o valor dessa variável é maior que zero.
+
+Isso serve para evitar que ocorram 2 'dispatches' ao mesmo tempo, pois, como o coach-Luiz
+ressaltou, é como se 2 'setState' estivessem sendo feitos. Isso pode gerar bugs severos na
+aplicação.

@@ -6,4 +6,40 @@ Atualização do Curso de React.Js e Next.js by Luiz Otávio Miranda
 Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
-Aula: 68. Criando o componente Tips para dar sugestões ao usuário sobre a tarefa e ciclo
+Aula: 69. Entendendo o mínimo necessário sobre Web Workers
+
+O 'worker'é como se o browser criasse uma mini instância dele próprio.
+É útil para essa aplicação, pois alguns métodos como 'setTimeout' e
+'setInterval' são parada automaticamente pelo browser quando ele está
+em segundo plano. Já com 'worker' não acontece isso.
+
+Há 2 passos para criar um 'worker'.
+
+1 — criar um diretório e um arquivo para conter o script do 'worker':
+
+self.onmessage = function (event) {
+  console.log('WORKER RECEBEU:', event.data);
+};
+
+self.postMessage('Olá, Componente!');
+
+2 — instanciar um objeto do tipo 'Worker', por exemplo no componente que se deseja
+enviar os dados para o arquivo acima:
+
+const worker = new Worker(
+  new URL('../../workers/timerWorker.js', import.meta.url),
+);
+
+worker.postMessage('Olá, Worker!');
+
+worker.onmessage = function (event) {
+  console.log('Componente recebeu:', event.data);
+};
+
+Assim, o 'worker' pode recebe dados por meio de mensagens. Ele também pode enviar de volta
+alguma mensagem para quem o instanciou.
+
+Existem métodos que finalizam o vida do 'worker', para que não fique sujeira no browser.
+
+-> no arquivo 'worker.js' | self.close();
+-> no Componente | Worker.prototype.terminate();

@@ -6,4 +6,6 @@ Atualização do Curso de React.Js e Next.js by Luiz Otávio Miranda
 Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
-Aula: 70. Criando um Singleton para gerenciar o worker (TimerWorkerManager)
+Aula: 71. web worker com setTimeout + useEffect para contagem regressiva
+
+Algumas anotações foram feitas no arquivo 'src/workers/timerWorker.js'.

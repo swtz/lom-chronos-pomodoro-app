@@ -6,4 +6,18 @@ Atualização do Curso de React.Js e Next.js by Luiz Otávio Miranda
 Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
-Aula: 84. Lógica do status da tarefa - Em progresso, Completa, Interrompida ou Abandonada
+Aula: 86. Ordenando o array de tarefas na interface + função sortTasks
+
+const { state } = useTaskContext();
+const sortedTasks = [...state.tasks].sort((a, b) => {
+  return b.startDate - a.startDate;
+});
+
+Só de aplicar o código acima no 'array' de Tasks, a lista fica organizada na ordem
+decrescente, ou seja, do maior valor para o menor valor. Por isso é interessante
+estudar mais o método de Array 'sort'.
+
+Nessa aula, foi adicionado um arquivo na pasta 'utils' cujo nome é 'sortTasks'.
+Ele faz a ordenação numérica e alfabética do Array de tasks.
+O arquivo está bem comentado pelo coach-Luiz. Por favor, estude esse algoritmo com
+calma, pois ele vai ajudar o cérebro a progredir em sentido lógico.

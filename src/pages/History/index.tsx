@@ -8,9 +8,11 @@ import styles from './styles.module.css';
 import { useTaskContext } from '../../hooks/useTaskContext';
 import { formatDate } from '../../utils/formatDate';
 import { getTaskStatus } from '../../utils/getTaskStatus';
+import { sortTasks } from '../../utils/sortTasks';
 
 export function History() {
   const { state } = useTaskContext();
+  const sortedTasks = sortTasks({ tasks: state.tasks });
 
   const taskType = {
     workTime: 'Foco',
@@ -47,7 +49,7 @@ export function History() {
               </tr>
             </thead>
             <tbody>
-              {state.tasks.map(task => {
+              {sortedTasks.map(task => {
                 return (
                   <tr key={task.id}>
                     <td>{task.name}</td>

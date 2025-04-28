@@ -6,14 +6,12 @@ Atualização do Curso de React.Js e Next.js by Luiz Otávio Miranda
 Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
-Aula: 80. useReducer e lazy initializer - salvando e recuperando o estado do localStorage
+Aula: 81. Criando a estrutura e CSS da página History (Histórico)
 
-Assim como no 'useState' é possível passar uma callback no primeiro parâmetro, a fim de
-usar o recurso de 'lazy initializer', o 'useReducer' também possui essa funcionalidade.
+<span className={styles.buttonContainer}>
+  <DefaultButton icon={<TrashIcon />} color='red' />
+</span>
 
-Basta passar uma callback no seu 3º parâmetro.
+É possível manipular os estilos do componente 'DefaultButton' por meio do
+elemento JSX 'span' (dica).
 
-Será usado o 'lazy initializer' para buscar o Estado salvo no 'localStorage'.
-
-Prestar atenção no código da aula para se acostumar com a conversão de 'object' para 'JSON'.
-É algo relativamente simples, porém é preciso se acostumar com o tratamento desses dados.

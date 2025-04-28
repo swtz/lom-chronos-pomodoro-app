@@ -6,7 +6,26 @@ Atualização do Curso de React.Js e Next.js by Luiz Otávio Miranda
 Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
-Aula: 73. Arquivos de áudio e favicon para usarmos nas próximas aulas
+Aula: 75. React Toastify com adapter - mensagens reutilizáveis do jeito certo
 
-Site que gera o 'favicon' e arquivos do tipo 'webmanifest':
-https://realfavicongenerator.net/
+Referência:
+https://fkhadra.github.io/react-toastify/introduction/
+
+Será usado o Design Pattern Adapter, pois, como os recursos do 'Toastify' serão
+usadas em várias partes da aplicação, o Adapter vai prevenir que alguma 'break change'
+nessa biblioteca quebre o código dela. Também, será evitada a "poluição" no componentes,
+pois o código para usar os recursos do 'Toastify' não é essencial para o funcionamento
+do componente. É apenas uma feature adicional.
+
+A moral do padrão 'Adapter' é que ele evita que o código que usa uma 'lib' externa
+seja alterado por conta de 'break changes' nas versões dessa 'lib'.
+
+Nesse caso, foi criado um objeto que contém algumas funções que executam as funções da
+'lib' externa, ou seja, caso a 'lib' mude, o componente que usa essas funções ficará intacto,
+pois a mudança deverá ser feita apenas nesse objeto que tem conhecimento dos métodos da 'lib'.
+
+Foi criado um componente para o 'container' do 'Toastify' que seve como um tipo de 'Adapter'
+também. Ele retorna algum componente como 'children' e possui o 'container' do 'Toastify' também.
+
+Assim, os componentes que usam esse estilo de notificação precisam apenas estar envolvidos
+nesse componente 'Toastify'.

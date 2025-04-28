@@ -6,12 +6,4 @@ Atualização do Curso de React.Js e Next.js by Luiz Otávio Miranda
 Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
-Aula: 81. Criando a estrutura e CSS da página History (Histórico)
-
-<span className={styles.buttonContainer}>
-  <DefaultButton icon={<TrashIcon />} color='red' />
-</span>
-
-É possível manipular os estilos do componente 'DefaultButton' por meio do
-elemento JSX 'span' (dica).
-
+Aula: 82. History - preenchendo o histórico com dados reais do estado

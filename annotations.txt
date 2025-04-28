@@ -6,11 +6,4 @@ Atualização do Curso de React.Js e Next.js by Luiz Otávio Miranda
 Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
-Aula: 83. Formatando a data com date-fns
-
-A data será formatada usando um 'package' da preferência do coach-Luiz:
-
-npm i date-fns
-
-Referência:
-https://date-fns.org/docs/Getting-Started
+Aula: 84. Lógica do status da tarefa - Em progresso, Completa, Interrompida ou Abandonada

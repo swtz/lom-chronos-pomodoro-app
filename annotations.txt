@@ -6,37 +6,46 @@ Atualização do Curso de React.Js e Next.js by Luiz Otávio Miranda
 Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
-Aula: 76. React Router - Iniciando o roteamento da aplicação
+Aula: 77. React Router - Criando um router e o componente ScrollToTop
 
-O React Router Dom (v7) permite que a aplicação React se comporte como uma
-SPA (Single Page Application), pois ele faz o roteamento entre os componentes
-que compõe essa aplicação sem a necessidade de recarregar a página (ou a aplicação)
-por completo.
+Essa aula mostrou uma técnica bem importante.
+Ela é útil para casos em que se deseja usar um hook de FORA DE UM CONTEXTO.
 
-Assim como o 'Toastify' o React Router faz uso de Contextos. Assim, o componente
-principal dele deve ficar num nível acima dos outros componentes da aplicação
-(o componente App, por exemplo).
+Ora, se algum hook é usado fora de um Contexto, o valor retornado por ele é
+apenas o 'initialValue' do método 'createContexto'. Entretanto, a maioria
+dos Contextos são usado com um 'Provider'. Logo, para obter o valor "correto"
+do contexto é necessário que o componente esteja dentro do Contexto para usufruir
+o valor passado na propriedade 'value'.
 
-Estrutura básica:
+Como resolver esse problema?
+Vamos usar como exemplo os componentes da 'lib' React Router.
 
-<BrowserRouter>
-  <Routes>
-    <Route path='/' element={<Home />} />
-    <Route path='/about-pomodoro' element={<AboutPomodoro />} />
-    <Route path='*' element={<NotFound />} />
-  </Routes>
-</BrowserRouter>
+function ScrollToTop() {
+  const { pathname } = useLocation();
 
-Como os elementos Home, AboutPomodoro e NotFound estão dentro do contexto do
-componente 'BrowserRouter', é possível usar um componente chamado 'Link'.
-Esse componente vai no lugar do elemento JSX 'a'. Assim, o aplicativo React obtém
-o comportamento do uma SPA.
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [pathname]);
 
-<Link
-  to='/'
-  aria-label='Ir para a Home'
-  title='Ir para a Home'
->
+  return null;
+}
 
-A propriedade 'to' é reconhecida pela propriedade 'path' contida no componente 'Route'.
-Assim, é garantido o comportamento de uma SPA.
+export function MainRouter() {
+  // o uso do hook 'useLocation' aqui, obteria o 'initialValue' de 'createContext',
+  // ou seja, não seria possível obter o valor dinâmico da variável 'pathname'.
+
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/about-pomodoro' element={<AboutPomodoro />} />
+        <Route path='*' element={<NotFound />} />
+      </Routes>
+      <ScrollToTop />
+    </BrowserRouter>
+  );
+}
+
+Assim, o componente 'ScrollToTop' tem acesso ao valor dinâmico do Contexto 'BrowserRouter'.
+A variável 'pathname' pode ser usada no hook 'useEffect' para que, na mudança de rota, seja
+possível usar um método JavaScript para rolar a tela pro topo da página.

@@ -6,26 +6,37 @@ Atualização do Curso de React.Js e Next.js by Luiz Otávio Miranda
 Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
-Aula: 75. React Toastify com adapter - mensagens reutilizáveis do jeito certo
+Aula: 76. React Router - Iniciando o roteamento da aplicação
 
-Referência:
-https://fkhadra.github.io/react-toastify/introduction/
+O React Router Dom (v7) permite que a aplicação React se comporte como uma
+SPA (Single Page Application), pois ele faz o roteamento entre os componentes
+que compõe essa aplicação sem a necessidade de recarregar a página (ou a aplicação)
+por completo.
 
-Será usado o Design Pattern Adapter, pois, como os recursos do 'Toastify' serão
-usadas em várias partes da aplicação, o Adapter vai prevenir que alguma 'break change'
-nessa biblioteca quebre o código dela. Também, será evitada a "poluição" no componentes,
-pois o código para usar os recursos do 'Toastify' não é essencial para o funcionamento
-do componente. É apenas uma feature adicional.
+Assim como o 'Toastify' o React Router faz uso de Contextos. Assim, o componente
+principal dele deve ficar num nível acima dos outros componentes da aplicação
+(o componente App, por exemplo).
 
-A moral do padrão 'Adapter' é que ele evita que o código que usa uma 'lib' externa
-seja alterado por conta de 'break changes' nas versões dessa 'lib'.
+Estrutura básica:
 
-Nesse caso, foi criado um objeto que contém algumas funções que executam as funções da
-'lib' externa, ou seja, caso a 'lib' mude, o componente que usa essas funções ficará intacto,
-pois a mudança deverá ser feita apenas nesse objeto que tem conhecimento dos métodos da 'lib'.
+<BrowserRouter>
+  <Routes>
+    <Route path='/' element={<Home />} />
+    <Route path='/about-pomodoro' element={<AboutPomodoro />} />
+    <Route path='*' element={<NotFound />} />
+  </Routes>
+</BrowserRouter>
 
-Foi criado um componente para o 'container' do 'Toastify' que seve como um tipo de 'Adapter'
-também. Ele retorna algum componente como 'children' e possui o 'container' do 'Toastify' também.
+Como os elementos Home, AboutPomodoro e NotFound estão dentro do contexto do
+componente 'BrowserRouter', é possível usar um componente chamado 'Link'.
+Esse componente vai no lugar do elemento JSX 'a'. Assim, o aplicativo React obtém
+o comportamento do uma SPA.
 
-Assim, os componentes que usam esse estilo de notificação precisam apenas estar envolvidos
-nesse componente 'Toastify'.
+<Link
+  to='/'
+  aria-label='Ir para a Home'
+  title='Ir para a Home'
+>
+
+A propriedade 'to' é reconhecida pela propriedade 'path' contida no componente 'Route'.
+Assim, é garantido o comportamento de uma SPA.

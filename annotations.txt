@@ -6,4 +6,11 @@ Atualização do Curso de React.Js e Next.js by Luiz Otávio Miranda
 Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
-Aula: 82. History - preenchendo o histórico com dados reais do estado
+Aula: 83. Formatando a data com date-fns
+
+A data será formatada usando um 'package' da preferência do coach-Luiz:
+
+npm i date-fns
+
+Referência:
+https://date-fns.org/docs/Getting-Started

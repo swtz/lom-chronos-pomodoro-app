@@ -6,7 +6,14 @@ Atualização do Curso de React.Js e Next.js by Luiz Otávio Miranda
 Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
-Aula: 79. Atualizando o título da página a cada segundo da tarefa ativa (document.title)
+Aula: 80. useReducer e lazy initializer - salvando e recuperando o estado do localStorage
 
-Caso seja preciso persistir um valor em um 'input' JSX, é possível passar a 'prop'
-'defaultValue'. Assim, o React não exige que esse valor inicial seja controlado.
+Assim como no 'useState' é possível passar uma callback no primeiro parâmetro, a fim de
+usar o recurso de 'lazy initializer', o 'useReducer' também possui essa funcionalidade.
+
+Basta passar uma callback no seu 3º parâmetro.
+
+Será usado o 'lazy initializer' para buscar o Estado salvo no 'localStorage'.
+
+Prestar atenção no código da aula para se acostumar com a conversão de 'object' para 'JSON'.
+É algo relativamente simples, porém é preciso se acostumar com o tratamento desses dados.

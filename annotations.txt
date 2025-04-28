@@ -6,7 +6,57 @@ Atualização do Curso de React.Js e Next.js by Luiz Otávio Miranda
 Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
-Aula: 73. Arquivos de áudio e favicon para usarmos nas próximas aulas
+Aula: 74. Tocando áudio ao completar uma tarefa (JavaScript Audio)
 
-Site que gera o 'favicon' e arquivos do tipo 'webmanifest':
-https://realfavicongenerator.net/
+Sobre atribuições dentro do hook 'useEffect':
+
+export function MyComponent() {
+  let myVar = 'foo';
+
+  useEffect(() => {
+    console.log('Something to display in console.');
+
+    myVar = 'bar';
+  })
+}
+
+Na linha de código que e atribuído um novo valor à variável 'myVar', o
+React vai gerar uma alerta relacionado a perda de valor que essa variável
+vai ter por conta das renderizações que alguma mudança de Estado pode
+provocar no componente.
+
+Ou seja, caso se deseje armazenar um valor o qual não seja perdido nas
+renderizações do React, uma maneira de fazer isso é com o hook 'useRef'.
+
+Por isso, é preciso ter muito cuidado ao usar 'useEffect'.
+
+Dica para pegar o tipo de retorno de uma função:
+
+const myVarRef = useRef<ReturnType<typeof myFunction> | null>(null);
+
+Assim, o TypeScript pega o tipo de retorno da função 'myFunction'.
+É útil, pois, caso seja alterado o retorno da função acima, o 'useRef'
+reconhecerá essa mudança automaticamente.
+
+A função que retorna a callback que executa o áudio e coloca em um novo
+'useEffect'
+
+useEffect(() => {
+  if (state.activeTask && playBeepRef.current === null) {
+    console.log('Carregando áudio...');
+    playBeepRef.current = loadBeep();
+  } else {
+    console.log('Zerando áudio...');
+    playBeepRef.current = null;
+  }
+}, [state.activeTask]);
+
+Por quê?
+O 'useEffect' existente atualizava a cada mudança do Estado — que é o 'countdown'.
+
+Assim, nesse novo 'useEffect', o áudio é carregado apenas quando existe uma 'activeTask';
+também quando o valor da variável 'playBeepRef' é 'null'.
+Lembrando que o valor dessa variável é a função que, de fato, executa o áudio.
+
+Depois, basta executar a função — playBeepRef.current() — no local onde é feito o 'dispatch'
+que contém a 'action' de 'COMPLETE_TASK'.

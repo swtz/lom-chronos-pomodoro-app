@@ -6,18 +6,7 @@ Atualização do Curso de React.Js e Next.js by Luiz Otávio Miranda
 Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
-Aula: 78. RouterLink - Criando o seu próprio Link para o React Router
+Aula: 79. Atualizando o título da página a cada segundo da tarefa ativa (document.title)
 
-É possível atribuir a um 'type'o tipo de um componente React:
-
-type MyComponentProps = {
-  href: string;
-  children: React.ReactNode;
-} & React.ComponentProps<'<a>'>;
-
-export function MyComponent({ href, children, ...props }: MyComponentProps) {
-  return <Link to={href} {...props}>{children}</Link>;
-}
-
-É interessante pegar o 'restante' das 'props', a fim de que o componente personalizado
-reconheça todas as 'props' que o componente JSX 'a' possui.
+Caso seja preciso persistir um valor em um 'input' JSX, é possível passar a 'prop'
+'defaultValue'. Assim, o React não exige que esse valor inicial seja controlado.

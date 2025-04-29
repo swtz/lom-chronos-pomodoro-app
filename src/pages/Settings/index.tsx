@@ -9,9 +9,10 @@ import styles from './styles.module.css';
 import { useRef } from 'react';
 import { useTaskContext } from '../../hooks/useTaskContext';
 import { showMessage } from '../../adapters/showMessage';
+import { TaskActionTypes } from '../../contexts/TaskContext/taskActions';
 
 export function Settings() {
-  const { state } = useTaskContext();
+  const { state, dispatch } = useTaskContext();
 
   const workTimeInput = useRef<HTMLInputElement>(null);
   const shortBreakTimeInput = useRef<HTMLInputElement>(null);
@@ -50,7 +51,12 @@ export function Settings() {
       return;
     }
 
-    console.log('SALVAR');
+    dispatch({
+      type: TaskActionTypes.CHANGE_SETTINGS,
+      payload: { workTime, shortBreakTime, longBreakTime },
+    });
+
+    showMessage.success('O tempo das tarefas foi atualizado');
   }
 
   return (

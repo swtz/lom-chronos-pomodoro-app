@@ -6,4 +6,12 @@ Atualização do Curso de React.Js e Next.js by Luiz Otávio Miranda
 Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
-Aula: 93. Validando os campos do formulário antes de salvar os dados
+Aula: 94. Fazendo dispatch de CHANGE_SETTINGS para salvar as configurações no estado
+
+O coach-Luiz reforçou a regra que deve ser seguida ao lidar com os métodos que manipulam
+o Estado da aplicação 'useState' ou 'useReducer'.
+Eles devem possuir funções puras, ou seja, função relacionadas estritamente ao tratamento
+do Estado sem depender de funções externas e nem possuir métodos assíncronos.
+Todo código que precise se comunicar com o "mundo externo" ao aplicativo deve ser
+usado em um 'useEffect', pois esse hook é que lida com efeitos colaterais, isto é,
+coisas que o React não monitora.

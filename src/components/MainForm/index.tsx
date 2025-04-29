@@ -33,7 +33,7 @@ export function MainForm() {
     const taskName = taskNameInput.current.value.trim();
 
     if (!taskName) {
-      showMessage.warning('Please enter a task name');
+      showMessage.warning('Digite um nome para a tarefa');
       return;
     }
 

@@ -11,11 +11,14 @@ import { Container } from '../../components/Container';
 import { DefaultButton } from '../../components/DefaultButton';
 import { Heading } from '../../components/Heading';
 
-import styles from './styles.module.css';
+import { showMessage } from '../../adapters/showMessage';
 import { TaskActionTypes } from '../../contexts/TaskContext/taskActions';
+
+import styles from './styles.module.css';
 
 export function History() {
   const { state, dispatch } = useTaskContext();
+  const [confirmClearHistory, setConfirmClearHistory] = useState(false);
   const hasTasks = state.tasks.length > 0;
 
   const [sortTasksOptions, setSortTasksOptions] = useState<SortTasksOptions>(
@@ -27,6 +30,13 @@ export function History() {
       };
     },
   );
+
+  useEffect(() => {
+    if (!confirmClearHistory) return;
+
+    setConfirmClearHistory(false);
+    dispatch({ type: TaskActionTypes.RESET_STATE });
+  }, [confirmClearHistory, dispatch]);
 
   useEffect(() => {
     setSortTasksOptions(prevState => ({
@@ -63,9 +73,13 @@ export function History() {
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) {
     event.preventDefault();
-    if (!confirm('Você tem certeza que deseja limpar o histórico?')) return;
-
-    dispatch({ type: TaskActionTypes.RESET_STATE });
+    showMessage.dismiss();
+    showMessage.confirm(
+      'Você tem certeza que deseja limpar o histórico?',
+      confirmation => {
+        setConfirmClearHistory(confirmation);
+      },
+    );
   }
 
   return (

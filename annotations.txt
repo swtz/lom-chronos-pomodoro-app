@@ -6,13 +6,16 @@ Atualização do Curso de React.Js e Next.js by Luiz Otávio Miranda
 Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
-Aula: 88. Limpando o histórico do estado e voltando ao estado inicial
+Aula: 89. Criando uma caixa de diálogo com o React Toastify
 
-Prestar atenção em como é importante reconhecer os Estados que o componente JSX
-está usando, pois, caso se deseje provocar uma mudança nesse componente, é preciso
-alterar precisamente o Estado que ele está usando.
-Nessa aplicação, existe o "Estado principal" da aplicação. Entretanto, na aula anterior,
-foi criado um novo Estado para tornar possível a reordenação das linhas da tabela que
-apresentam os dados das tarefas criadas. Assim, foi necessário criar um 'useEffect' para
-"prestar atenção" no "Estado principal", a fim dele alterar o "Estado secundário". o qual
-o componente JSX estava exibindo.
+Essa aula apresenta uma comunicação entre o método 'toast' da 'lib' 'Toastify'
+e um componente personalizado.
+
+Achei um tanto complexa essa comunicação, entretanto, percebi que, basicamente,
+o retorna de uma função é "jogado" no parâmetro da outra. Assim, quando a função
+de callback é usada dentro do método 'showMessage.confirm' o valor de 'confirmation'
+é o retorno da função 'closeToast' que é recebida como 'props' no componente
+personalizado.
+
+Ou seja, foram feitos 3 encadeamentos de funções onde seus retornos se tornaram
+os parâmetros das outras.

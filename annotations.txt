@@ -6,4 +6,4 @@ Atualização do Curso de React.Js e Next.js by Luiz Otávio Miranda
 Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
-Aula: 90. Corrigindo um bug ao tentar limpar o histórico fora da página
+Aula: 91. Estrutura da página de configurações dos tempos (Settings)

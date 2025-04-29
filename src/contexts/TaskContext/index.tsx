@@ -55,9 +55,9 @@ export function TaskContextProvider({ children }: TaskContextProviderProps) {
 
     if (!state.activeTask) {
       worker.terminate();
+    } else {
+      document.title = `${state.formattedSecondsRemaining} — Chronos Pomodoro`;
     }
-
-    document.title = `${state.formattedSecondsRemaining} - Chronos Pomodoro`;
 
     worker.postMessage(state);
   }, [worker, state]);

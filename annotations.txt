@@ -6,8 +6,6 @@ Atualização do Curso de React.Js e Next.js by Luiz Otávio Miranda
 Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
-Aula: 95. Colocando título em todas as páginas (document.title e useEffect)
-
-What's the next level?
-
--> Limitar o tamanho do histórico de tasks
+Aulas: 
+96. Fazendo a build final do nosso site e conferindo com preview do vite
+97. Publicando nosso site online na Vercel

@@ -6,8 +6,24 @@ import { Heading } from '../../components/Heading';
 import { MainTemplate } from '../../templates/MainTemplate';
 
 import styles from './styles.module.css';
+import { useRef } from 'react';
+import { useTaskContext } from '../../hooks/useTaskContext';
 
 export function Settings() {
+  const { state } = useTaskContext();
+
+  const workTimeInput = useRef<HTMLInputElement>(null);
+  const shortBreakTimeInput = useRef<HTMLInputElement>(null);
+  const longBreakTimeInput = useRef<HTMLInputElement>(null);
+
+  function handleSaveSettings(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const workTime = workTimeInput.current?.value;
+    const shortBreakTime = shortBreakTimeInput.current?.value;
+    const longBreakTime = longBreakTimeInput.current?.value;
+  }
+
   return (
     <MainTemplate>
       <Container>
@@ -22,15 +38,30 @@ export function Settings() {
       </Container>
 
       <Container>
-        <form action='' className={styles.form}>
+        <form onSubmit={handleSaveSettings} action='' className={styles.form}>
           <div className={styles.formRow}>
-            <DefaultInput id='workTime' labelText='Foco' />
+            <DefaultInput
+              id='workTime'
+              labelText='Foco'
+              ref={workTimeInput}
+              defaultValue={state.config.workTime}
+            />
           </div>
           <div className={styles.formRow}>
-            <DefaultInput id='shortBreakTime' labelText='Descanso curto' />
+            <DefaultInput
+              id='shortBreakTime'
+              labelText='Descanso curto'
+              ref={shortBreakTimeInput}
+              defaultValue={state.config.shortBreakTime}
+            />
           </div>
           <div className={styles.formRow}>
-            <DefaultInput id='longBreakTime' labelText='Descanso longo' />
+            <DefaultInput
+              id='longBreakTime'
+              labelText='Descanso longo'
+              ref={longBreakTimeInput}
+              defaultValue={state.config.longBreakTime}
+            />
           </div>
           <div className={styles.formRow}>
             <DefaultButton

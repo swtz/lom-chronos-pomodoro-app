@@ -6,4 +6,4 @@ Atualização do Curso de React.Js e Next.js by Luiz Otávio Miranda
 Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
-Aula: 91. Estrutura da página de configurações dos tempos (Settings)
+Aula: 92. Capturando o onSubmit (envio) do formulário com ref e useRef dos inputs

@@ -6,4 +6,4 @@ Atualização do Curso de React.Js e Next.js by Luiz Otávio Miranda
 Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
-Aula: 92. Capturando o onSubmit (envio) do formulário com ref e useRef dos inputs
+Aula: 93. Validando os campos do formulário antes de salvar os dados

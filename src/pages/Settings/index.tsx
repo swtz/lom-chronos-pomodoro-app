@@ -8,6 +8,7 @@ import { MainTemplate } from '../../templates/MainTemplate';
 import styles from './styles.module.css';
 import { useRef } from 'react';
 import { useTaskContext } from '../../hooks/useTaskContext';
+import { showMessage } from '../../adapters/showMessage';
 
 export function Settings() {
   const { state } = useTaskContext();
@@ -18,10 +19,38 @@ export function Settings() {
 
   function handleSaveSettings(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    showMessage.dismiss();
 
-    const workTime = workTimeInput.current?.value;
-    const shortBreakTime = shortBreakTimeInput.current?.value;
-    const longBreakTime = longBreakTimeInput.current?.value;
+    const workTime = Number(workTimeInput.current?.value);
+    const shortBreakTime = Number(shortBreakTimeInput.current?.value);
+    const longBreakTime = Number(longBreakTimeInput.current?.value);
+
+    const workTimeLimit = workTime < 1 || workTime > 60;
+    const shortBreakTimeLimit = shortBreakTime < 1 || shortBreakTime > 60;
+    const longBreakTimeLimit = longBreakTime < 1 || longBreakTime > 60;
+
+    const errorMessages = [];
+
+    if (!workTime || !shortBreakTime || !longBreakTime) {
+      errorMessages.push('Não é possível enviar um formulário vazio.');
+    }
+
+    if (isNaN(workTime) || isNaN(shortBreakTime) || isNaN(longBreakTime)) {
+      errorMessages.push('Por favor, digite apenas números nos campos abaixo.');
+    }
+
+    if (workTimeLimit || shortBreakTimeLimit || longBreakTimeLimit) {
+      errorMessages.push(
+        'Por favor, digite apenas números de 1 a 60 nos campos abaixo.',
+      );
+    }
+
+    if (errorMessages.length > 0) {
+      errorMessages.forEach(error => showMessage.error(error));
+      return;
+    }
+
+    console.log('SALVAR');
   }
 
   return (
@@ -45,6 +74,7 @@ export function Settings() {
               labelText='Foco'
               ref={workTimeInput}
               defaultValue={state.config.workTime}
+              type='number'
             />
           </div>
           <div className={styles.formRow}>
@@ -53,6 +83,7 @@ export function Settings() {
               labelText='Descanso curto'
               ref={shortBreakTimeInput}
               defaultValue={state.config.shortBreakTime}
+              type='number'
             />
           </div>
           <div className={styles.formRow}>
@@ -61,6 +92,7 @@ export function Settings() {
               labelText='Descanso longo'
               ref={longBreakTimeInput}
               defaultValue={state.config.longBreakTime}
+              type='number'
             />
           </div>
           <div className={styles.formRow}>

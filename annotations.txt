@@ -6,18 +6,14 @@ Atualização do Curso de React.Js e Next.js by Luiz Otávio Miranda
 Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
-Aula: 86. Ordenando o array de tarefas na interface + função sortTasks
+Aula: 87. Reordenando a tabela do histórico ao clicar th (no cabeçalho)
 
-const { state } = useTaskContext();
-const sortedTasks = [...state.tasks].sort((a, b) => {
-  return b.startDate - a.startDate;
-});
+Dica TypeScript:
 
-Só de aplicar o código acima no 'array' de Tasks, a lista fica organizada na ordem
-decrescente, ou seja, do maior valor para o menor valor. Por isso é interessante
-estudar mais o método de Array 'sort'.
+{ props }: Pick<MyTypeProps, 'fooBar'> | props.fooBar
 
-Nessa aula, foi adicionado um arquivo na pasta 'utils' cujo nome é 'sortTasks'.
-Ele faz a ordenação numérica e alfabética do Array de tasks.
-O arquivo está bem comentado pelo coach-Luiz. Por favor, estude esse algoritmo com
-calma, pois ele vai ajudar o cérebro a progredir em sentido lógico.
+Com 'Pick', é possível escolher apenas um campo do tipo 'MyTypeProps'.
+
+{ props }: Omit<MyTypeProps, 'foo' | 'bar'> | props.fooBar
+
+Com 'Omit', é possível omitir os campos do tipo 'MyTypeProps' separando-os pelo 'pipe'.

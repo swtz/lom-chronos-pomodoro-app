@@ -39,6 +39,12 @@ export function History() {
   }, [confirmClearHistory, dispatch]);
 
   useEffect(() => {
+    return () => {
+      showMessage.dismiss();
+    };
+  }, []);
+
+  useEffect(() => {
     setSortTasksOptions(prevState => ({
       ...prevState,
       tasks: sortTasks({

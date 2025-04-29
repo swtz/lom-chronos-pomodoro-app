@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { TrashIcon } from 'lucide-react';
 
 import { useTaskContext } from '../../hooks/useTaskContext';
@@ -12,9 +12,12 @@ import { DefaultButton } from '../../components/DefaultButton';
 import { Heading } from '../../components/Heading';
 
 import styles from './styles.module.css';
+import { TaskActionTypes } from '../../contexts/TaskContext/taskActions';
 
 export function History() {
-  const { state } = useTaskContext();
+  const { state, dispatch } = useTaskContext();
+  const hasTasks = state.tasks.length > 0;
+
   const [sortTasksOptions, setSortTasksOptions] = useState<SortTasksOptions>(
     () => {
       return {
@@ -24,6 +27,23 @@ export function History() {
       };
     },
   );
+
+  useEffect(() => {
+    setSortTasksOptions(prevState => ({
+      ...prevState,
+      tasks: sortTasks({
+        tasks: state.tasks,
+        direction: prevState.direction,
+        field: prevState.field,
+      }),
+    }));
+  }, [state.tasks]);
+
+  const taskType = {
+    workTime: 'Foco',
+    shortBreakTime: 'Descanso curto',
+    longBreakTime: 'Descanso longo',
+  };
 
   function handleSortTasks({ field }: Pick<SortTasksOptions, 'field'>) {
     const newDirection = sortTasksOptions.direction === 'desc' ? 'asc' : 'desc';
@@ -39,76 +59,90 @@ export function History() {
     });
   }
 
-  const taskType = {
-    workTime: 'Foco',
-    shortBreakTime: 'Descanso curto',
-    longBreakTime: 'Descanso longo',
-  };
+  function handleResetHistory(
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) {
+    event.preventDefault();
+    if (!confirm('Você tem certeza que deseja limpar o histórico?')) return;
+
+    dispatch({ type: TaskActionTypes.RESET_STATE });
+  }
 
   return (
     <MainTemplate>
       <Container>
         <Heading>
           <span>History</span>
-          <span className={styles.buttonContainer}>
-            <DefaultButton
-              icon={<TrashIcon />}
-              color='red'
-              aria-label='Apagar todo o histórico de tarefas'
-              title='Apagar todo o histórico de tarefas'
-            />
-          </span>
+          {hasTasks && (
+            <span className={styles.buttonContainer}>
+              <DefaultButton
+                icon={<TrashIcon />}
+                color='red'
+                aria-label='Apagar todo o histórico de tarefas'
+                title='Apagar todo o histórico de tarefas'
+                onClick={handleResetHistory}
+              />
+            </span>
+          )}
         </Heading>
       </Container>
 
       <Container>
-        <div className={styles.responsiveTable}>
-          <table>
-            <thead>
-              <tr>
-                <th
-                  className={styles.thSort}
-                  onClick={() => {
-                    handleSortTasks({ field: 'name' });
-                  }}
-                >
-                  Tarefa ⇕
-                </th>
-                <th
-                  className={styles.thSort}
-                  onClick={() => {
-                    handleSortTasks({ field: 'duration' });
-                  }}
-                >
-                  Duração ⇕
-                </th>
-                <th
-                  className={styles.thSort}
-                  onClick={() => {
-                    handleSortTasks({ field: 'startDate' });
-                  }}
-                >
-                  Data ⇕
-                </th>
-                <th>Status</th>
-                <th>Tipo</th>
-              </tr>
-            </thead>
-            <tbody>
-              {sortTasksOptions.tasks.map(task => {
-                return (
-                  <tr key={task.id}>
-                    <td>{task.name}</td>
-                    <td>{task.duration}min</td>
-                    <td>{formatDate(task.startDate)}</td>
-                    <td>{getTaskStatus(task, state.activeTask)}</td>
-                    <td>{taskType[task.type]}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
+        {hasTasks && (
+          <div className={styles.responsiveTable}>
+            <table>
+              <thead>
+                <tr>
+                  <th
+                    className={styles.thSort}
+                    onClick={() => {
+                      handleSortTasks({ field: 'name' });
+                    }}
+                  >
+                    Tarefa ⇕
+                  </th>
+                  <th
+                    className={styles.thSort}
+                    onClick={() => {
+                      handleSortTasks({ field: 'duration' });
+                    }}
+                  >
+                    Duração ⇕
+                  </th>
+                  <th
+                    className={styles.thSort}
+                    onClick={() => {
+                      handleSortTasks({ field: 'startDate' });
+                    }}
+                  >
+                    Data ⇕
+                  </th>
+                  <th>Status</th>
+                  <th>Tipo</th>
+                </tr>
+              </thead>
+              <tbody>
+                {sortTasksOptions.tasks.map(task => {
+                  return (
+                    <tr key={task.id}>
+                      <td>{task.name}</td>
+                      <td>{task.duration}min</td>
+                      <td>{formatDate(task.startDate)}</td>
+                      <td>{getTaskStatus(task, state.activeTask)}</td>
+                      <td>{taskType[task.type]}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        )}
+
+        {!hasTasks && (
+          <p style={{ textAlign: 'center', fontWeight: 'bold' }}>
+            Nenhuma tarefa foi criada ainda.
+          </p>
+        )}
       </Container>
     </MainTemplate>
   );

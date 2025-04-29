@@ -6,14 +6,13 @@ Atualização do Curso de React.Js e Next.js by Luiz Otávio Miranda
 Seção 2:
 Projeto prático com React, Vite, TypeScript, React Router, Hooks e Web Worker
 
-Aula: 87. Reordenando a tabela do histórico ao clicar th (no cabeçalho)
+Aula: 88. Limpando o histórico do estado e voltando ao estado inicial
 
-Dica TypeScript:
-
-{ props }: Pick<MyTypeProps, 'fooBar'> | props.fooBar
-
-Com 'Pick', é possível escolher apenas um campo do tipo 'MyTypeProps'.
-
-{ props }: Omit<MyTypeProps, 'foo' | 'bar'> | props.fooBar
-
-Com 'Omit', é possível omitir os campos do tipo 'MyTypeProps' separando-os pelo 'pipe'.
+Prestar atenção em como é importante reconhecer os Estados que o componente JSX
+está usando, pois, caso se deseje provocar uma mudança nesse componente, é preciso
+alterar precisamente o Estado que ele está usando.
+Nessa aplicação, existe o "Estado principal" da aplicação. Entretanto, na aula anterior,
+foi criado um novo Estado para tornar possível a reordenação das linhas da tabela que
+apresentam os dados das tarefas criadas. Assim, foi necessário criar um 'useEffect' para
+"prestar atenção" no "Estado principal", a fim dele alterar o "Estado secundário". o qual
+o componente JSX estava exibindo.
